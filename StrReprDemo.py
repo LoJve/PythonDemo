@@ -28,3 +28,22 @@ class Student(object):
 
 s = Student("Li") # s ==> People object (name Li)
 print(s)
+
+'''
+    __iter__ demo
+'''
+class Fib(object):
+    def __init__(self):
+        self.a, self.b = 0,1
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        self.a, self.b = self.b, self.a + self.b
+        if self.b > 100:
+            raise StopIteration()
+        return self.b
+
+for index in Fib():
+    print(index)
